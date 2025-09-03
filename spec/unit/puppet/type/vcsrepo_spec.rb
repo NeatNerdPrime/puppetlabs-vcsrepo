@@ -32,7 +32,7 @@ describe Puppet::Type.type(:vcsrepo) do
     described_class.new(name: '/repo',
                         ensure: :present,
                         source: 'http://example.com/repo/',
-                        provider: provider)
+                        provider:)
   end
 
   let(:ensureprop) do
@@ -140,7 +140,7 @@ describe Puppet::Type.type(:vcsrepo) do
 
   describe 'when running the type it should autorequire packages' do
     let(:catalog) { Puppet::Resource::Catalog.new }
-    let(:resource) { described_class.new(name: '/foo', provider: provider) }
+    let(:resource) { described_class.new(name: '/foo', provider:) }
 
     before :each do
       ['git', 'git-core', 'mercurial', 'subversion'].each do |pkg|
